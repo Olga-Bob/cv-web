@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lebenslauf - Fachinformatikerin Anwendungsentwicklung</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #EDE8D0;
+      color: #000;
+    }
+
+    header {
+      background-color: #EDE8D0;
+      padding: 20px;
+      text-align: center;
+    }
+
+    img {
+      width: 120px;
+      border-radius: 50%;
+      margin-top: 10px;
+    }
+
+    section {
+      padding: 20px;
+      margin: 15px auto;
+      max-width: 800px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+
+    section:hover {
+      transform: translateY(-3px);
+    }
+
+    h2 {
+      cursor: pointer;
+      border-bottom: 2px solid #3A5F7D;
+      padding-bottom: 5px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    button {
+      padding: 8px 12px;
+      margin-top: 10px;
+      cursor: pointer;
+      background-color: #3A5F7D;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: #6C8EA4;
+    }
+
+    .dark {
+      background-color: #1e1e1e;
+      color: #EDE8D0;
+    }
+
+    .dark section {
+      background-color: #2c2c2c;
+    }
+
+    a {
+      color: #3A5F7D;
+    }
+
+    a:hover {
+      color: #6C8EA4;
+    }
+    .dark header {
+      background-color: #2c2c2c;
+      color: #EDE8D0;
+    }
+
+    .dark header h1 {
+      color: #6C8EA4;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Olga Boboshko</h1>
+  <p>IT-Spezialistin (Fachinformatikerin Anwendungsentwicklung)</p>
+  <img src="Profibild.jpg" alt="Profilbild">
+  <br>
+  <button onclick="toggleDarkMode()">Dark / Light Mode</button>
+</header>
+
+<section>
+  <h2 onclick="toggleSection(this)">Über mich</h2>
+  <p>Motivierte IT-Spezialistin mit langjähriger Erfahrung als Informatiklehrerin sowie aktuellen Kenntnissen in Webentwicklung.</p>
+</section>
+
+<section>
+  <h2 onclick="toggleSection(this)">Berufserfahrung</h2>
+  <ul id="jobs">
+    <li>05/2022–02/2025: Sprach- und Integrationsmittlerin (SprInt)</li>
+    <li>03/2022–05/2022: Übersetzerin / Erzieherin</li>
+    <li>09/2003–10/2017: Informatiklehrerin, Iwan Franko Gymnasium (Ukraine)</li>
+  </ul>
+  <button onclick="addJob()">Neuen Job hinzufügen</button>
+</section>
+
+<section>
+  <h2 onclick="toggleSection(this)">Ausbildung</h2>
+  <p>Seit 06/2025: Umschulung Fachinformatikerin Anwendungsentwicklung</p>
+  <p>09/1998–06/2003: Staatliche Volodymyr Hnatiuk pädagogische Universität Ternopil – Lehrerin für Mathematik und Informatik (Diplom auf den Namen Netsko)</p>
+</section>
+
+<section>
+  <h2 onclick="toggleSection(this)">Weiterbildung</h2>
+  <ul>
+    <li>Intel Teach Program Essentials</li>
+    <li>Harvard CS50 (Brain Academy Ternopil)</li>
+    <li>Integrations- und Deutschsprachkurse (B1, B2)</li>
+  </ul>
+</section>
+
+<section>
+  <h2 onclick="toggleSection(this)">Skills</h2>
+  <ul>
+    <li onclick="showSkill(this)">HTML/CSS/JavaScript</li>
+    <li onclick="showSkill(this)">Python</li>
+    <li onclick="showSkill(this)">C++</li>
+    <li onclick="showSkill(this)">MS Office / Cloud Tools</li>
+  </ul>
+  <p id="skillInfo"></p>
+</section>
+
+<section>
+  <h2 onclick="toggleSection(this)">Kontakt</h2>
+  <p>E-Mail: boboshko.olga@gmail.com</p>
+  <p>Telefon: +49 1777654321</p>
+  <p>
+    <a href="https://docs.google.com/document/d/1ECV78XvPyPXrZnzp_in93wliTm7z883p/edit" target="_blank">Anschreiben (Google Drive)</a><br>
+    <a href="https://drive.google.com/file/d/19pksl5IQM05uo97CqzY4i8U9NiKUCnes/view" target="_blank">Arbeitszeugnis SprInt (Google Drive)</a><br>
+    <a href="https://drive.google.com/file/d/1mZaNzTQU3sVm5disf4L9XM-cU3osdaea/view" target="_blank">Zeugnisbewertung (auf den Namen Netsko)</a>
+  </p>
+</section>
+
+<script>
+  function toggleDarkMode() {
+    document.body.classList.toggle("dark");
+  }
+
+  function toggleSection(header) {
+    const content = header.nextElementSibling;
+    content.classList.toggle("hidden");
+  }
+
+  function addJob() {
+    const job = prompt("Neuen Job eingeben:");
+    if (job) {
+      const li = document.createElement("li");
+      li.textContent = job;
+      document.getElementById("jobs").appendChild(li);
+    }
+  }
+
+  function showSkill(element) {
+    document.getElementById("skillInfo").textContent = "Details zu: " + element.textContent;
+  }
+</script>
+
+</body>
+</html>
+
+<!--
+Begründung (CSS):
+Ich habe ein neutrales Design mit eigenem CSS erstellt und durch moderne UI-Elemente wie Schatten, Hover-Effekte und klare Struktur verbessert.
+-->
